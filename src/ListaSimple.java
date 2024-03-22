@@ -4,6 +4,18 @@ import java.util.NoSuchElementException;
 public class ListaSimple<T> implements Iterable<T> {
     private Nodo cabeza;
     private int tamano;
+
+    public T obtener(int indice) {
+        if (indice < 0 || indice >= tamano) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        Nodo temp = cabeza;
+        for (int i = 0; i < indice; i++) {
+            temp = temp.siguiente;
+        }
+        return temp.dato;
+    }
+
     private class Nodo {
         T dato;
         Nodo siguiente;
